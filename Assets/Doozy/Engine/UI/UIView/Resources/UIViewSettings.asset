@@ -22,5 +22,5 @@ MonoBehaviour:
   DisableGameObjectWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   UseCustomStartAnchoredPosition: 1
-  RenamePrefix: 'View - '
+  RenamePrefix: '[V] - '
   RenameSuffix: 
