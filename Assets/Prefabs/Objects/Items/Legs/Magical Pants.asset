@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18a8de44911af3d469c1316271da3402, type: 3}
-  m_Name: Magical Robe
+  m_Name: Magical Pants
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 60946939a7d6530469e4519122bd227f, type: 3}
+  icon: {fileID: 21300000, guid: 8f8d3fca0d1559c44b25c957cd2dfec9, type: 3}
   type: 1
-  description: A robe irradiating magical energy.
-  price: 45
-  equipmentType: 2
+  description: 
+  price: 40
+  equipmentType: 3
   equipmentRarity: 2
-  armour: 25
+  armour: 20
   durability: 100

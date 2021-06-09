@@ -35,9 +35,6 @@ public class OpenShop : MonoBehaviour
     }
 
     #region Temp GameManager
-    /// <summary>
-    /// Pauses/UnPauses the game
-    /// </summary>
     public virtual void Pause(bool status)
     {
         Time.timeScale = Convert.ToSingle(!status);
@@ -59,17 +56,11 @@ public class OpenShop : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// OnEnable, start listening to events
-    /// </summary>
     protected virtual void OnEnable()
     {
         Message.AddListener<GameEventMessage>(OnGameEvent);
     }
 
-    /// <summary>
-    /// OnDisable, stop listening to events
-    /// </summary>
     protected virtual void OnDisable()
     {
         Message.RemoveListener<GameEventMessage>(OnGameEvent);

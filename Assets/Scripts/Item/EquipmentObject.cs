@@ -5,7 +5,7 @@ public enum EquipmentType
     None,
     Head,
     Chest,
-    Pants,
+    Legs,
     Boots,
     Cloak,
     Gloves,
@@ -30,8 +30,6 @@ public class EquipmentObject : ItemObject
 
     public int armour;
     public int durability = 100;
-
-    public float price;
 
     public void Awake()
     {

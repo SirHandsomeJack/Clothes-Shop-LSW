@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18a8de44911af3d469c1316271da3402, type: 3}
-  m_Name: Magical Robe
+  m_Name: Leather Leggings
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 60946939a7d6530469e4519122bd227f, type: 3}
+  icon: {fileID: 21300000, guid: 0eb8734f90b67cf4cb8b5bd11ca1d1ab, type: 3}
   type: 1
-  description: A robe irradiating magical energy.
-  price: 45
-  equipmentType: 2
-  equipmentRarity: 2
-  armour: 25
+  description: 
+  price: 25
+  equipmentType: 3
+  equipmentRarity: 1
+  armour: 10
   durability: 100

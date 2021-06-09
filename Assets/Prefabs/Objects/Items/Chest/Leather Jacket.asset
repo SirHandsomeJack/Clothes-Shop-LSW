@@ -15,8 +15,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f268d578611c688449551b9c4c4c56fe, type: 3}
   type: 1
   description: A cool leather jacket for cool people.
+  price: 30
   equipmentType: 2
   equipmentRarity: 1
-  armour: 5
+  armour: 15
   durability: 100
-  price: 30
