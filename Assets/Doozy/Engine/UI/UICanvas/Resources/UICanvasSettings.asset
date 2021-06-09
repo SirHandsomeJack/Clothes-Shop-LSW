@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: 485b9cd77b20c8949a69e34890ae2401, type: 2}
   DontDestroyCanvasOnLoad: 1
-  RenamePrefix: '[C] - '
+  RenamePrefix: '[C] '
   RenameSuffix: 

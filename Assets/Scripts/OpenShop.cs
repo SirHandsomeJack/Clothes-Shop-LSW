@@ -6,6 +6,7 @@ using UnityEngine;
 public class OpenShop : MonoBehaviour
 {
     public RectTransform Area;
+    public GameObject Interact;
 
     private GameObject _player;
     private UIPopup _popup;
@@ -18,14 +19,17 @@ public class OpenShop : MonoBehaviour
 
     public void Update()
     {
+        if (Interact == null)
+            return;
+
+        Interact.SetActive(_player != null && Area.rect.Contains(_player.transform.position));
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (_popup.IsShowing) _popup.Hide();
-            else
+            if (Interact.activeSelf)
             {
-                _player = GameObject.FindGameObjectWithTag("Player");
-                if (_player != null && Area.rect.Contains(_player.transform.position))
-                    _popup.Show();
+                if (_popup.IsShowing) _popup.Hide();
+                else _popup.Show();
             }
         }
     }

@@ -33,7 +33,7 @@ MonoBehaviour:
   ShowOnPointerUp: 1
   ShowSelectedLoopAnimation: 1
   DisableButtonBetweenClicksInterval: 0.2
-  RenamePrefix: '[B] - '
+  RenamePrefix: '[B] '
   RenameSuffix: 
   VirtualButtonName: Submit
   VirtualButtonNameAlt: Jump
