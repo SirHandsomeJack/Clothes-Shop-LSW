@@ -17,7 +17,7 @@ MonoBehaviour:
   Names:
   - Back
   - Buy
-  - Sell
-  - Unnamed
-  - Tab
   - Inventory
+  - Sell
+  - Tab
+  - Unnamed

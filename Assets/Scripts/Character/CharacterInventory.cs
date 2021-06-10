@@ -16,8 +16,6 @@ public class CharacterInventory : MonoBehaviour
     {
         for (int i = 0; i < InventorySize; i++)
             Inventory.Container.Add(new InventorySlot());
-
-        SetGold(UnityEngine.Random.Range(1000, 5000));
     }
 
     /// <summary>
