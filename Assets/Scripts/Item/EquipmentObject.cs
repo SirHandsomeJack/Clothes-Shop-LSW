@@ -5,11 +5,11 @@ public enum EquipmentType
     None,
     Head,
     Chest,
-    Legs,
+    Leg,
     Boots,
     Cloak,
     Gloves,
-    Belts,
+    Belt,
     Bracers,
 }
 

@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InventoryDisplayer : MonoBehaviour
 {
     public GameObject slotPrefab, itemPrefab;
     public InventoryObject inventory;
 
+    public InventoryCharacterDisplayer CharacterDisplayer;
+
     private Dictionary<InventorySlot, GameObject> inventorySlots = new Dictionary<InventorySlot, GameObject>();
     private GameObject[] inventoryItems;
 
-    protected void Awake()
-    {
-        CreateDisplay();
-    }
+    private Dictionary<EquipmentType, GameObject> characterSlots = new Dictionary<EquipmentType, GameObject>();
 
     public void CreateDisplay()
     {
@@ -32,26 +31,34 @@ public class InventoryDisplayer : MonoBehaviour
 
     public void UpdateDisplay()
     {
+        if (inventorySlots.Count != inventory.Container.Count)
+            CreateDisplay();
+
         for (int i = 0; i < inventory.Container.Count; i++)
         {
             InventorySlot slot = inventory.Container[i];
             if (slot.Item == null)
             {
                 if (inventoryItems[i] != null)
+                {
                     Destroy(inventoryItems[i]);
+                    inventoryItems[i] = null;
+                }
             }
             else
             {
-                if (inventoryItems[i] != null)
-                {
-                    Image image = inventoryItems[i].GetComponent<Image>();
-                    image.sprite = slot.Item.icon;
-                }
-                else
+                if (inventoryItems[i] == null)
                 {
                     GameObject clone = Instantiate(itemPrefab, inventorySlots[slot].transform);
                     clone.name = slot.Item.name;
                     inventoryItems[i] = clone;
+                }
+
+                InventoryItem item = inventoryItems[i].GetComponent<InventoryItem>();
+                if (item != null)
+                {
+                    item.UpdateItem(slot.Item, inventory.Container[i].Amount);
+                    item.OnDoubleClick += OnDoubleClick;
                 }
             }
         }
@@ -63,5 +70,47 @@ public class InventoryDisplayer : MonoBehaviour
             Destroy(slot.Value);
 
         inventorySlots = new Dictionary<InventorySlot, GameObject>();
+    }
+
+    public void OnDoubleClick(PointerEventData eventData, InventoryItem inventoryItem)
+    {
+        ItemObject item = inventoryItem.Item;
+        if (item != null && item is EquipmentObject equipment)
+        {
+            GameObject characterSlot = CharacterDisplayer.GetCharacterSlot(equipment.equipmentType);
+            if (characterSlot == null)
+                return;
+
+            if (characterSlots.ContainsKey(equipment.equipmentType))
+            {
+                if (characterSlots[equipment.equipmentType] == inventoryItem.gameObject)
+                {
+                    inventory.AddItem(item, 1);
+
+                    Destroy(characterSlots[equipment.equipmentType]);
+                    characterSlots.Remove(equipment.equipmentType);
+
+                    UpdateDisplay();
+                }
+            }
+            else
+            {
+                inventory.RemoveItem(item, 1);
+
+                GameObject clone = Instantiate(itemPrefab, characterSlot.transform);
+                clone.name = item.name;
+
+                characterSlots.Add(equipment.equipmentType, clone);
+
+                InventoryItem i = clone.GetComponent<InventoryItem>();
+                if (i != null)
+                {
+                    i.UpdateItem(item, 1);
+                    i.OnDoubleClick += OnDoubleClick;
+                }
+                
+                UpdateDisplay();
+            }
+        }
     }
 }
