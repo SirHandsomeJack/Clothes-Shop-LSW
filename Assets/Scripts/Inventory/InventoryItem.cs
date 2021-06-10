@@ -1,10 +1,12 @@
-﻿using DG.Tweening;
-using System;
+﻿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the item inside slot, update icon and text and send double click event
+/// </summary>
 public class InventoryItem : MonoBehaviour, IPointerClickHandler
 {
     public ItemObject Item { get; private set; }

@@ -13,8 +13,6 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector2 _movement;
 
-    
-
     public void Update()
     {
         HandleInput();
@@ -25,6 +23,9 @@ public class CharacterMovement : MonoBehaviour
         HandleMovement();
     }
 
+    /// <summary>
+    /// Gets input from raw axis, normalises movement and set booleans
+    /// </summary>
     public virtual void HandleInput()
     {
         _movement.x = Input.GetAxisRaw("Horizontal");
@@ -39,6 +40,9 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Apply movement and set animation parameters
+    /// </summary>
     public virtual void HandleMovement()
     {
         if (Rigidbody != null)

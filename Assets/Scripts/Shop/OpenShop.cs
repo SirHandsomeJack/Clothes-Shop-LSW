@@ -2,6 +2,9 @@ using Doozy.Engine;
 using Doozy.Engine.UI;
 using UnityEngine;
 
+/// <summary>
+/// Handles opening the shop, checks if player is inside shop area and starts dialogue
+/// </summary>
 public class OpenShop : MonoBehaviour
 {
     public RectTransform Area;
@@ -25,8 +28,10 @@ public class OpenShop : MonoBehaviour
         if (Interact == null)
             return;
 
+        // Show interact button when player is inside shopping area
         Interact.SetActive(_player != null && Area.rect.Contains(_player.transform.position));
 
+        // Start dialogue if E is pressed and inside area
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (Interact.activeSelf)
@@ -37,6 +42,10 @@ public class OpenShop : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Listens for game events triggered by buttons for script
+    /// </summary>
+    /// <param name="gameEvent"></param>
     public virtual void OnGameEvent(GameEventMessage gameEvent)
     {
         switch (gameEvent.EventName)

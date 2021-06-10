@@ -1,6 +1,9 @@
 ﻿using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Handles the character slots and armour rating
+/// </summary>
 public class InventoryCharacterDisplayer : MonoBehaviour
 {
     public GameObject HeadSlot, ChestSlot, LegSlot, BootsSlot, CloakSlot, GlovesSlot, BeltSlot, BracersSlot;

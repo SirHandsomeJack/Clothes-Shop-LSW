@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Handles the inventory slots from character inventory and equipping items
+/// </summary>
 public class InventoryDisplayer : MonoBehaviour
 {
     public GameObject slotPrefab, itemPrefab;
@@ -14,6 +17,9 @@ public class InventoryDisplayer : MonoBehaviour
 
     private Dictionary<EquipmentType, GameObject> characterSlots = new Dictionary<EquipmentType, GameObject>();
 
+    /// <summary>
+    /// Creates items to put into slots from character inventory, destroy exisitng items in slots
+    /// </summary>
     public void CreateDisplay()
     {
         if (inventorySlots.Count > 0)
@@ -29,6 +35,9 @@ public class InventoryDisplayer : MonoBehaviour
         inventoryItems = new GameObject[inventorySlots.Count];
     }
 
+    /// <summary>
+    /// Updates items in slots, add new items, remove old items or update existing items
+    /// </summary>
     public void UpdateDisplay()
     {
         if (inventorySlots.Count != inventory.Container.Count)
@@ -39,6 +48,7 @@ public class InventoryDisplayer : MonoBehaviour
             InventorySlot slot = inventory.Container[i];
             if (slot.Item == null)
             {
+                // Remove item
                 if (inventoryItems[i] != null)
                 {
                     InventoryItem item = inventoryItems[i].GetComponent<InventoryItem>();
@@ -50,6 +60,7 @@ public class InventoryDisplayer : MonoBehaviour
             }
             else
             {
+                // Add item
                 if (inventoryItems[i] == null)
                 {
                     GameObject clone = Instantiate(itemPrefab, inventorySlots[slot].transform);
@@ -57,6 +68,7 @@ public class InventoryDisplayer : MonoBehaviour
                     inventoryItems[i] = clone;
                 }
 
+                // Update item
                 InventoryItem item = inventoryItems[i].GetComponent<InventoryItem>();
                 if (item != null)
                 {
@@ -67,6 +79,9 @@ public class InventoryDisplayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Clears the items in slots
+    /// </summary>
     public void DestroyDisplay()
     {
         foreach (var slot in inventorySlots)
@@ -75,6 +90,11 @@ public class InventoryDisplayer : MonoBehaviour
         inventorySlots = new Dictionary<InventorySlot, GameObject>();
     }
 
+    /// <summary>
+    /// Double click behaviour to equip or unequip from character
+    /// </summary>
+    /// <param name="eventData"></param>
+    /// <param name="inventoryItem"></param>
     public void OnDoubleClick(PointerEventData eventData, InventoryItem inventoryItem)
     {
         ItemObject item = inventoryItem.Item;
@@ -86,6 +106,7 @@ public class InventoryDisplayer : MonoBehaviour
 
             if (characterSlots.ContainsKey(equipment.equipmentType))
             {
+                // Unequip from character
                 if (characterSlots[equipment.equipmentType] == inventoryItem.gameObject)
                 {
                     inventory.AddItem(item, 1);
@@ -99,6 +120,7 @@ public class InventoryDisplayer : MonoBehaviour
             }
             else
             {
+                // Equip to character
                 inventory.RemoveItem(item, 1);
 
                 GameObject clone = Instantiate(itemPrefab, characterSlot.transform);

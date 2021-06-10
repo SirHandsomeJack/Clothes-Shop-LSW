@@ -2,6 +2,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Handles pausing and quitting game
+/// </summary>
 public class GameManager : PersistentSingleton<GameManager>
 {
     /// <summary>
@@ -13,6 +16,10 @@ public class GameManager : PersistentSingleton<GameManager>
         Debug.LogFormat("Paused > <i>{0}</i>", status);
     }
 
+    /// <summary>
+    /// Listens for game events triggered by buttons for script
+    /// </summary>
+    /// <param name="gameEvent"></param>
     public virtual void OnGameEvent(GameEventMessage gameEvent)
     {
         Debug.LogFormat("<i>{0}</i> event triggered.", gameEvent.EventName);

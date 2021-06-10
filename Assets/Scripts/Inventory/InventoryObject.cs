@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Adds a new inventory object to store items objects
+/// </summary>
 [CreateAssetMenu(fileName = "New Inventory Object", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
     public List<InventorySlot> Container = new List<InventorySlot>();
 
+    /// <summary>
+    /// Add item to inventory
+    /// </summary>
+    /// <param name="item">Item to look for</param>
+    /// <param name="amount">Amount to remove</param>
     public void AddItem(ItemObject item, int amount)
     {
         // Find slot with same item
@@ -21,6 +29,12 @@ public class InventoryObject : ScriptableObject
         else slot.AddAmount(amount);
     }
 
+    /// <summary>
+    /// Remove item from inventory
+    /// </summary>
+    /// <param name="item">Item to look for</param>
+    /// <param name="amount">Amount to remove</param>
+    /// <returns></returns>
     public bool RemoveItem(ItemObject item, int amount)
     {
         // Find same item in inventory
@@ -37,6 +51,10 @@ public class InventoryObject : ScriptableObject
         return false;
     }
 
+    /// <summary>
+    /// Gets next available empty slot
+    /// </summary>
+    /// <returns></returns>
     public InventorySlot GetItemSlot()
     {
         foreach (var slot in Container)
@@ -48,16 +66,31 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
+    /// <summary>
+    /// Gets index of item in inventory
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     public int GetItemSlotIndex(ItemObject item)
     {
         return Container.FindIndex(0, Container.Count, x => x.Item == item);
     }
 
+    /// <summary>
+    /// Gets slot where item is found
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     public InventorySlot GetItemSlot(ItemObject item)
     {
         return Container.Find(x => x.Item == item);
     }
 
+    /// <summary>
+    /// Gets amount of item in slot
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     public int GetItemAmount(ItemObject item)
     {
         InventorySlot slot = GetItemSlot(item);

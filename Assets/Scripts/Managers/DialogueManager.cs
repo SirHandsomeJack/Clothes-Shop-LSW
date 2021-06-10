@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Handles dialogue, show/hide, update text to screen and handle dialogue tree
+/// </summary>
 public class DialogueManager : Singleton<DialogueManager>
 {
     public TextMeshProUGUI NameText, DialogueText;
@@ -16,6 +19,10 @@ public class DialogueManager : Singleton<DialogueManager>
         dialogueView = UIView.GetViews("General", "Dialogue")[0];
     }
 
+    /// <summary>
+    /// Start dialogue, show dialogue box and update text with name and first sentence
+    /// </summary>
+    /// <param name="dialogue"></param>
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.LogFormat("{0} has started dialogue.", dialogue.name);
@@ -33,6 +40,9 @@ public class DialogueManager : Singleton<DialogueManager>
         GameEventMessage.SendEvent("StartDialogue");
     }
 
+    /// <summary>
+    /// Go to next setence in dialogue
+    /// </summary>
     public void NextSentence()
     {
         if (sentences.Count == 0) EndDialogue();
@@ -44,6 +54,9 @@ public class DialogueManager : Singleton<DialogueManager>
         }
     }
 
+    /// <summary>
+    /// End dialogue, no more sentences left
+    /// </summary>
     public void EndDialogue()
     {
         dialogueView.Hide();

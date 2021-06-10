@@ -22,6 +22,9 @@ public enum EquipmentRarity
     Legendary,
 }
 
+/// <summary>
+/// Adds a new equipment object
+/// </summary>
 [CreateAssetMenu(fileName = "New Equipment Object", menuName = "Inventory System/Items/Equipment")]
 public class EquipmentObject : ItemObject
 {

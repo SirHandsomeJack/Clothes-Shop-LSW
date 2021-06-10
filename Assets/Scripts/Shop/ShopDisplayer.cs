@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Display items inside shop
+/// </summary>
 public class ShopDisplayer : MonoBehaviour
 {
     public GameObject shopPrefab;
@@ -17,6 +20,9 @@ public class ShopDisplayer : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Creates item listings to buy/sell inside shop
+    /// </summary>
     public void CreateDisplay()
     {
         foreach (var item in items)

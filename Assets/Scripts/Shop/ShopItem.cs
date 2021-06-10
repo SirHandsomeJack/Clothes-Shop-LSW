@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles item listing in shop, updating text and adding/removing to inventory
+/// </summary>
 public class ShopItem : MonoBehaviour
 {
     public ItemObject Item { get; private set; }
@@ -18,12 +21,18 @@ public class ShopItem : MonoBehaviour
         targetInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInventory>();
     }
 
+    /// <summary>
+    /// Updates item to display icon and texts
+    /// </summary>
     public void UpdateItem(ItemObject item)
     {
         Item = item;
         UpdateText();
     }
 
+    /// <summary>
+    /// Updates item to display icon and texts
+    /// </summary>
     private void UpdateText()
     {
         name = Item.name;
@@ -36,6 +45,9 @@ public class ShopItem : MonoBehaviour
         UpdateSellText();
     }
 
+    /// <summary>
+    /// Updates sell text to display inventory amount and sell price
+    /// </summary>
     private void UpdateSellText()
     {
         if (ItemSell != null)
@@ -49,6 +61,10 @@ public class ShopItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets the sell price by the item price and percentage of durability
+    /// </summary>
+    /// <returns></returns>
     public float GetSellPrice()
     {
         float price = Item.price;
@@ -63,6 +79,9 @@ public class ShopItem : MonoBehaviour
         return price;
     }
 
+    /// <summary>
+    /// Buy item, check if player has enough gold and add item to inventory
+    /// </summary>
     public void BuyItem()
     {
         if (targetInventory == null)
@@ -77,6 +96,9 @@ public class ShopItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sell item, check if there is one item to sell of that item, remove it and add gold
+    /// </summary>
     public void SellItem()
     {
         if (targetInventory == null)
