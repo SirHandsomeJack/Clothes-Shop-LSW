@@ -177,7 +177,7 @@ PlayerSettings:
   applicationIdentifier:
     Standalone: com.sirhandsomejack.shop
   buildNumber:
-    Standalone: 2106081
+    Standalone: 2106101
     iPhone: 0
     tvOS: 0
   AndroidBundleVersionCode: 1

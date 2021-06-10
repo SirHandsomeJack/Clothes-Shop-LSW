@@ -25,6 +25,9 @@ public class GameManager : PersistentSingleton<GameManager>
             case "UnPause":
                 Pause(false);
                 break;
+            case "Quit":
+                Application.Quit();
+                break;
         }
     }
 
