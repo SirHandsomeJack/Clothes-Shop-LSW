@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7242408464954277518, guid: 74af73d03a61dd74189df790d732b76c, type: 3}
       propertyPath: m_Name
-      value: Legs
+      value: Leg
       objectReference: {fileID: 0}
     - target: {fileID: 8590215951196122451, guid: 74af73d03a61dd74189df790d732b76c, type: 3}
       propertyPath: m_Sprite

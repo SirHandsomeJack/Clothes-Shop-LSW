@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class InventoryCharacterDisplayer : MonoBehaviour
 {
     public GameObject HeadSlot, ChestSlot, LegSlot, BootsSlot, CloakSlot, GlovesSlot, BeltSlot, BracersSlot;
+    public TextMeshProUGUI ArmourText;
+
+    private int armour;
 
     public GameObject GetCharacterSlot(EquipmentType type)
     {
@@ -27,5 +31,15 @@ public class InventoryCharacterDisplayer : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    public void AddArmour(int value)
+    {
+        armour += value;
+        if (armour < 0)
+            armour = 0;
+
+        if (ArmourText != null)
+            ArmourText.text = "" + armour;
     }
 }

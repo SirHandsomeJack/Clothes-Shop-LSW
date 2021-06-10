@@ -41,6 +41,9 @@ public class InventoryDisplayer : MonoBehaviour
             {
                 if (inventoryItems[i] != null)
                 {
+                    InventoryItem item = inventoryItems[i].GetComponent<InventoryItem>();
+                    item.UpdateItem(null, 0);
+
                     Destroy(inventoryItems[i]);
                     inventoryItems[i] = null;
                 }
@@ -89,6 +92,7 @@ public class InventoryDisplayer : MonoBehaviour
 
                     Destroy(characterSlots[equipment.equipmentType]);
                     characterSlots.Remove(equipment.equipmentType);
+                    CharacterDisplayer.AddArmour(-equipment.armour);
 
                     UpdateDisplay();
                 }
@@ -101,6 +105,7 @@ public class InventoryDisplayer : MonoBehaviour
                 clone.name = item.name;
 
                 characterSlots.Add(equipment.equipmentType, clone);
+                CharacterDisplayer.AddArmour(equipment.armour);
 
                 InventoryItem i = clone.GetComponent<InventoryItem>();
                 if (i != null)

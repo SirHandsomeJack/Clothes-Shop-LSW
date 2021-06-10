@@ -1092,7 +1092,7 @@ MonoBehaviour:
       SoundData:
         SoundSource: 0
         DatabaseName: General
-        SoundName: No Sound
+        SoundName: handleCoins
         AudioClip: {fileID: 0}
         OutputAudioMixerGroup: {fileID: 0}
     PresetCategory: Uncategorized
@@ -3594,7 +3594,7 @@ MonoBehaviour:
       SoundData:
         SoundSource: 0
         DatabaseName: General
-        SoundName: No Sound
+        SoundName: handleCoins2
         AudioClip: {fileID: 0}
         OutputAudioMixerGroup: {fileID: 0}
     PresetCategory: Uncategorized
@@ -5596,7 +5596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abddb38874485549887ac33bbeac508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryItemPrefab: {fileID: 4348400844980549339, guid: 74e18896d5015c24299b63d20b1637be, type: 3}
   targetInventory: {fileID: 0}
   ItemImage: {fileID: 7974703606542970835}
   ItemName: {fileID: 2591593420969325902}

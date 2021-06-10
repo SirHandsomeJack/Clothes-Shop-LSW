@@ -25,9 +25,11 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public void UpdateItem(ItemObject item, int amount)
     {
         Item = item;
-
-        if (ItemImage != null)
-            ItemImage.sprite = item.icon;
+        if (item != null)
+        {
+            if (ItemImage != null)
+                ItemImage.sprite = item.icon;
+        }
 
         if (AmountText != null)
         {
